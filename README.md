@@ -6,6 +6,17 @@ OGIS is an open, vendor-neutral interoperability standard for defining how gluco
 
 Glucose data is fragmented across proprietary vendor APIs, inconsistent application schemas, delayed synchronization paths, and incompatible data semantics. OGIS provides a common language for glucose interoperability so manufacturers, developers, providers, and researchers can integrate once and interoperate everywhere.
 
+## Relationship to Open Glucose Telemetry (OGT)
+
+OGIS and OGT are complementary:
+
+- **OGIS** defines the standard
+- **OGT** implements the runtime architecture that transports and operationalizes OGIS-compliant events
+
+In simple terms:
+
+**OGIS defines what glucose data means, and OGT defines how glucose data moves.**
+
 ## What OGIS Is
 
 OGIS defines the shared interoperability contract for glucose data, including:
@@ -59,6 +70,49 @@ The initial OGIS scope includes:
 - interoperability mappings
 - conformance requirements
 
+## Repository Goals
+
+This repository will contain:
+
+- core specifications
+- canonical schemas
+- semantic conventions
+- transport contracts
+- security and privacy guidance
+- FHIR mapping guidance
+- conformance rules
+- RFCs and governance docs
+
+## Proposed Repository Structure
+
+```text
+/spec
+  /core
+  /semantic-conventions
+  /event-model
+  /api-contracts
+  /security
+  /privacy
+  /fhir-mappings
+  /conformance
+/schemas
+  /jsonschema
+  /protobuf
+/rfcs
+/examples
+/governance
+```
+
+## Initial Deliverables
+
+- RFC-0001: OGIS Overview
+- `glucose.reading` schema v0.1
+- `glucose.alert` schema v0.1
+- device and sensor lifecycle schemas
+- semantic conventions draft
+- FHIR mapping draft
+- conformance model draft
+
 ## Example Canonical Event
 
 ```json
@@ -88,3 +142,16 @@ The initial OGIS scope includes:
     "adapter_version": "0.1.0"
   }
 }
+```
+
+## Status
+
+Draft v0.1 — foundational design phase
+
+## Vision
+
+A world where glucose data is portable, interoperable, trusted, and easy to build on.
+
+## License
+
+TBD
