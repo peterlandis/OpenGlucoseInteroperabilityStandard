@@ -1,0 +1,18 @@
+{
+  "event_type": "glucose.reading",
+  "event_version": "0.1",
+  "subject_id": "local:iphone:demo-subject",
+  "observed_at": "2026-03-29T08:15:00.000Z",
+  "value": 5.9,
+  "unit": "mmol/L",
+  "measurement_source": "manual",
+  "device": {
+    "type": "app"
+  },
+  "provenance": {
+    "source_system": "app.manual",
+    "raw_event_id": "manual:9f2c4e8a-1b3d-4c5e-9f0a-123456789abc",
+    "adapter_version": "0.1.0",
+    "ingested_at": "2026-03-29T08:15:02.000Z"
+  }
+}

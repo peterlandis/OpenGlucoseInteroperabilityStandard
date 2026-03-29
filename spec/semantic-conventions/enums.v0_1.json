@@ -1,0 +1,8 @@
+{
+  "$comment": "OGIS v0.1 enum constants; informational mirror of JSON Schema enums.",
+  "ogis_version": "0.1",
+  "measurement_source": ["cgm", "bgm", "manual"],
+  "device_type": ["cgm", "bgm", "unknown", "phone", "watch", "app", "other"],
+  "trend_direction": ["rising", "falling", "stable", "unknown"],
+  "quality_status": ["valid", "questionable", "invalid", "unknown"]
+}
