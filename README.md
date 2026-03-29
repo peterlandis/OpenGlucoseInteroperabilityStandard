@@ -2,6 +2,20 @@
 
 OGIS is an open, vendor-neutral interoperability standard for defining how glucose-related data is modeled, described, exchanged, and integrated across devices, applications, and clinical systems.
 
+## Normative artifacts (v0.1 GAT)
+
+The **machine-readable** contract for the GlucoseAITracker / OGT integration slice is:
+
+- **JSON Schema:** [schemas/jsonschema/glucose.reading.v0_1.json](./schemas/jsonschema/glucose.reading.v0_1.json)
+- **Examples (validated in CI):** [examples/](./examples/)
+- **Overview RFC:** [rfcs/RFC-0001-ogis-overview.md](./rfcs/RFC-0001-ogis-overview.md)
+- **Spec index:** [spec/README.md](./spec/README.md)
+- **Release pin label:** [schemas/VERSION.md](./schemas/VERSION.md)
+
+Validate examples locally: `npm install && npm run validate:examples`
+
+Implementation plans: [specifications/plans/](./specifications/plans/)
+
 ## Mission
 
 Glucose data is fragmented across proprietary vendor APIs, inconsistent application schemas, delayed synchronization paths, and incompatible data semantics. OGIS provides a common language for glucose interoperability so manufacturers, developers, providers, and researchers can integrate once and interoperate everywhere.
@@ -226,28 +240,31 @@ OGIS
 }
 ```
 
-**Step 2 — OGT adapter maps it using OGIS**
+**Step 2 — OGT adapter maps it using OGIS (`glucose.reading` v0.1)**
 
 ```json
 {
   "event_type": "glucose.reading",
-  "event_version": "1.0",
+  "event_version": "0.1",
   "subject_id": "subj_123",
-  "device_id": "abbott:abc123",
-  "timestamp_observed": "2026-03-28T15:05:00Z",
-  "timestamp_received": "2026-03-28T15:05:08Z",
-  "glucose": {
-    "value": 142,
-    "unit": "mg/dL"
+  "observed_at": "2026-03-28T15:05:00.000Z",
+  "received_at": "2026-03-28T15:05:08.000Z",
+  "value": 142,
+  "unit": "mg/dL",
+  "measurement_source": "cgm",
+  "device": {
+    "manufacturer": "Abbott",
+    "model": "Libre",
+    "type": "cgm"
   },
-  "measurement_source": "interstitial",
   "trend": {
     "direction": "rising"
   },
   "provenance": {
-    "source_vendor": "Abbott",
+    "source_system": "abbott",
     "raw_event_id": "raw_789",
-    "adapter_version": "0.1.0"
+    "adapter_version": "0.1.0",
+    "ingested_at": "2026-03-28T15:05:09.000Z"
   }
 }
 ```
@@ -373,40 +390,50 @@ This repository will contain:
 - FHIR mapping draft
 - conformance model draft
 
-## Example Canonical Event
+## Example Canonical Event (`glucose.reading` v0.1)
+
+This example matches [schemas/jsonschema/glucose.reading.v0_1.json](./schemas/jsonschema/glucose.reading.v0_1.json). More fixtures: [examples/glucose.reading.healthkit.json](./examples/glucose.reading.healthkit.json).
 
 ```json
 {
   "event_type": "glucose.reading",
-  "event_version": "1.0",
+  "event_version": "0.1",
   "subject_id": "subj_123",
-  "device_id": "dev_456",
-  "timestamp_observed": "2026-03-28T14:32:00Z",
-  "timestamp_received": "2026-03-28T14:33:15Z",
-  "glucose": {
-    "value": 142,
-    "unit": "mg/dL"
+  "observed_at": "2026-03-28T14:32:00.000Z",
+  "received_at": "2026-03-28T14:33:15.000Z",
+  "value": 142,
+  "unit": "mg/dL",
+  "measurement_source": "cgm",
+  "device": {
+    "manufacturer": "Example CGM",
+    "model": "X1",
+    "type": "cgm"
   },
-  "measurement_source": "interstitial",
+  "provenance": {
+    "source_system": "example_vendor",
+    "raw_event_id": "evt_789",
+    "adapter_version": "0.1.0",
+    "ingested_at": "2026-03-28T14:33:16.000Z"
+  },
   "trend": {
     "direction": "rising",
     "rate": 1.8,
-    "unit": "mg/dL/min"
+    "rate_unit": "mg/dL/min"
   },
   "quality": {
     "status": "valid"
-  },
-  "provenance": {
-    "source_vendor": "example_vendor",
-    "raw_event_id": "evt_789",
-    "adapter_version": "0.1.0"
   }
 }
 ```
 
+## Consumers
+
+- **Open Glucose Telemetry (OGT):** ingest, validate, normalize; pin this schema revision (see [schemas/VERSION.md](./schemas/VERSION.md)).
+- **GlucoseAITracker (GLUCOSE-009):** canonical glucose model and unified insights; feature-flagged OGT path — see GlucoseAITracker `specifications/plans/GLUCOSE-009-OGT-OGIS-INTEGRATION-PLAN.md` when that repo is checked out alongside this one.
+
 ## Status
 
-Draft v0.1 — foundational design phase
+Draft v0.1 — `glucose.reading` schema **0.1** and examples landed; further event types and conformance TBD
 
 ## Vision
 

@@ -1,0 +1,29 @@
+{
+  "event_type": "glucose.reading",
+  "event_version": "0.1",
+  "subject_id": "local:iphone:demo-subject",
+  "observed_at": "2026-03-29T14:32:00.000Z",
+  "source_recorded_at": "2026-03-29T14:32:00.000Z",
+  "value": 142,
+  "unit": "mg/dL",
+  "measurement_source": "cgm",
+  "device": {
+    "manufacturer": "Dexcom",
+    "model": "G7",
+    "type": "cgm"
+  },
+  "provenance": {
+    "source_system": "com.apple.health",
+    "raw_event_id": "A1B2C3D4-E5F6-7890-ABCD-EF1234567890",
+    "adapter_version": "0.1.0",
+    "ingested_at": "2026-03-29T14:33:15.000Z"
+  },
+  "trend": {
+    "direction": "rising",
+    "rate": 1.8,
+    "rate_unit": "mg/dL/min"
+  },
+  "quality": {
+    "status": "valid"
+  }
+}

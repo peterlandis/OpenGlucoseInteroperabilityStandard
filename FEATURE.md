@@ -12,67 +12,87 @@ Feature backlog for the **Open Glucose Interoperability Standard (OGIS)** reposi
 - 🚫 **Blocked** - Blocked by dependencies or issues
 - ⏸️ **Paused** - Temporarily paused
 
+## Phase Legend (GlucoseAITracker / OGT integration)
+
+- **v0.1 (GAT)** — In scope for **[OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md)**: `glucose.reading` v0.1, RFC-0001 overview, semantic conventions, time/unit/provenance docs, examples, repo scaffold, README alignment. *Out of this slice:* `glucose.alert`, sensor/therapy shells, full API/security/FHIR/conformance packs.
+- **v0.1** — Broader OGIS v0.1 backlog not required for the GAT slice (shown as **Next** when deferred).
+- **Next** — After the GAT v0.1 slice
+- **Later** — Governance/process or post–v0.1 waves
+
 ## Feature Categories
 
 ### 📜 Governance & Core Specification
 
 | Feature ID | Title | Description | Phase | Status | Assignee | Plan Document | Notes |
 |------------|-------|-------------|-------|--------|----------|---------------|-------|
-| GOV-001 | RFC-0001: OGIS Overview | RFC covering mission, scope, principles, ecosystem role, and relationship to OGT | v0.1 | 📋 Planned | - | - | Entry point for readers and implementers |
-| GOV-002 | Versioning & compatibility policy | Rules for schema and event versioning, additive vs breaking changes, deprecation | v0.1 | 📋 Planned | - | - | Aligns semantic versioning with event `event_version` |
+| GOV-001 | RFC-0001: OGIS Overview | RFC covering mission, scope, principles, ecosystem role, and relationship to OGT | v0.1 (GAT) | 🧪 Testing | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Landed: [rfcs/RFC-0001-ogis-overview.md](rfcs/RFC-0001-ogis-overview.md); versioning § in RFC |
+| GOV-002 | Versioning & compatibility policy | Rules for schema and event versioning, additive vs breaking changes, deprecation | Next | 📋 Planned | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Full policy doc beyond RFC stub; not required for GAT MVP |
 | GOV-003 | Governance & contribution guide | How RFCs are proposed, reviewed, and merged; roles and decision process | Later | 📋 Planned | - | - | Supports `/governance` and open evolution |
 
 ### 📦 Canonical Event Schemas
 
 | Feature ID | Title | Description | Phase | Status | Assignee | Plan Document | Notes |
 |------------|-------|-------------|-------|--------|----------|---------------|-------|
-| EVT-001 | `glucose.reading` schema v0.1 | Versioned canonical schema (e.g. JSON Schema) with required/optional fields, examples | v0.1 | 📋 Planned | - | - | Core path; matches README exemplar |
-| EVT-002 | `glucose.alert` schema v0.1 | Alert event schema (thresholds, severities, linkage to readings where applicable) | v0.1 | 📋 Planned | - | - | Pairs with readings for downstream UX |
-| EVT-003 | Sensor session lifecycle schemas | `sensor.session.started` / `sensor.session.ended` (and shared session fields) | v0.1 | 📋 Planned | - | - | One deliverable for lifecycle pair |
-| EVT-004 | `device.status` & `therapy.event` v0.1 | Minimal schemas for device state and therapy-context events (extensible shells) | v0.1 | 📋 Planned | - | - | Single slice for non-glucose-primary events |
+| EVT-001 | `glucose.reading` schema v0.1 | Versioned canonical schema (e.g. JSON Schema) with required/optional fields, examples | v0.1 (GAT) | 🧪 Testing | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Landed: [schemas/jsonschema/glucose.reading.v0_1.json](schemas/jsonschema/glucose.reading.v0_1.json) |
+| EVT-002 | `glucose.alert` schema v0.1 | Alert event schema (thresholds, severities, linkage to readings where applicable) | Next | 📋 Planned | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Explicit non-goal for GAT MVP v0.1 |
+| EVT-003 | Sensor session lifecycle schemas | `sensor.session.started` / `sensor.session.ended` (and shared session fields) | Next | 📋 Planned | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Non-goal for GAT MVP v0.1 |
+| EVT-004 | `device.status` & `therapy.event` v0.1 | Minimal schemas for device state and therapy-context events (extensible shells) | Next | 📋 Planned | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Non-goal for GAT MVP v0.1 |
 
 ### 🏷️ Semantic Conventions
 
 | Feature ID | Title | Description | Phase | Status | Assignee | Plan Document | Notes |
 |------------|-------|-------------|-------|--------|----------|---------------|-------|
-| SEM-001 | Semantic conventions registry v0.1 | Documented enums and meanings: e.g. `trend.direction`, `measurement_source`, `quality.status`, `device.type` | v0.1 | 📋 Planned | - | - | Referenced by event schemas |
-| SEM-002 | Cross-event naming & metadata rules | Stable `event_type` patterns, subject/device identifier guidance, extension points | v0.1 | 📋 Planned | - | - | Keeps adapters and validators consistent |
+| SEM-001 | Semantic conventions registry v0.1 | Documented enums and meanings: e.g. `trend.direction`, `measurement_source`, `quality.status`, `device.type` | v0.1 (GAT) | 🧪 Testing | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Landed: [spec/semantic-conventions/README.md](spec/semantic-conventions/README.md), [enums.v0_1.json](spec/semantic-conventions/enums.v0_1.json) |
+| SEM-002 | Cross-event naming & metadata rules | Stable `event_type` patterns, subject/device identifier guidance, extension points | Next | 📋 Planned | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Broader multi-event consistency; not blocking GAT MVP |
 
 ### ⏱️ Time, Units & Provenance
 
 | Feature ID | Title | Description | Phase | Status | Assignee | Plan Document | Notes |
 |------------|-------|-------------|-------|--------|----------|---------------|-------|
-| TUP-001 | Time semantics specification | Definitions and rules for observed, device-recorded, received, exported timestamps; ordering | v0.1 | 📋 Planned | - | - | First-class time model from README |
-| TUP-002 | Unit semantics specification | Explicit glucose units (e.g. mg/dL, mmol/L), conversion rules, preserving source units | v0.1 | 📋 Planned | - | - | No implicit unit assumptions |
-| TUP-003 | Provenance model specification | Source vendor/system, raw event id, adapter/producer versions, transformation metadata | v0.1 | 📋 Planned | - | - | Trust, audit, and clinical alignment |
+| TUP-001 | Time semantics specification | Definitions and rules for observed, device-recorded, received, exported timestamps; ordering | v0.1 (GAT) | 🧪 Testing | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Landed: [spec/core/time-semantics.md](spec/core/time-semantics.md) |
+| TUP-002 | Unit semantics specification | Explicit glucose units (e.g. mg/dL, mmol/L), conversion rules, preserving source units | v0.1 (GAT) | 🧪 Testing | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Landed: [spec/core/unit-semantics.md](spec/core/unit-semantics.md) |
+| TUP-003 | Provenance model specification | Source vendor/system, raw event id, adapter/producer versions, transformation metadata | v0.1 (GAT) | 🧪 Testing | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Landed: [spec/core/provenance.md](spec/core/provenance.md) |
 
 ### 🔌 API, Transport & Operations
 
 | Feature ID | Title | Description | Phase | Status | Assignee | Plan Document | Notes |
 |------------|-------|-------------|-------|--------|----------|---------------|-------|
-| API-001 | API contract draft v0.1 | Spec-level query/resource shapes that expose OGIS events (no OGT implementation here) | v0.1 | 📋 Planned | - | - | Under `/spec/api-contracts` |
-| API-002 | Transport payload expectations | Envelope or batch patterns, content types, replay/idempotency semantics at spec layer | v0.1 | 📋 Planned | - | - | Complements OGT without mandating a broker |
+| API-001 | API contract draft v0.1 | Spec-level query/resource shapes that expose OGIS events (no OGT implementation here) | Next | 📋 Planned | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Non-goal for GAT MVP v0.1 |
+| API-002 | Transport payload expectations | Envelope or batch patterns, content types, replay/idempotency semantics at spec layer | Next | 📋 Planned | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Non-goal for GAT MVP v0.1 |
 
 ### 🔐 Security & Privacy
 
 | Feature ID | Title | Description | Phase | Status | Assignee | Plan Document | Notes |
 |------------|-------|-------------|-------|--------|----------|---------------|-------|
-| SEC-001 | Security guidance v0.1 | AuthN/Z expectations, encryption in transit/at rest, audit hooks for implementations | v0.1 | 📋 Planned | - | - | `/spec/security` |
-| SEC-002 | Privacy guidance v0.1 | Data minimization, consent-related fields, boundaries for PII/PHI in events | v0.1 | 📋 Planned | - | - | `/spec/privacy` |
+| SEC-001 | Security guidance v0.1 | AuthN/Z expectations, encryption in transit/at rest, audit hooks for implementations | Next | 📋 Planned | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Non-goal for GAT MVP v0.1 |
+| SEC-002 | Privacy guidance v0.1 | Data minimization, consent-related fields, boundaries for PII/PHI in events | Next | 📋 Planned | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Non-goal for GAT MVP v0.1 |
 
 ### 🏥 Clinical Mapping
 
 | Feature ID | Title | Description | Phase | Status | Assignee | Plan Document | Notes |
 |------------|-------|-------------|-------|--------|----------|---------------|-------|
-| FHIR-001 | FHIR mapping draft v0.1 | Mapping guidance for Observation, Device, Provenance (and related) for core events | v0.1 | 📋 Planned | - | - | Does not replace FHIR; aligns OGIS to clinical use |
+| FHIR-001 | FHIR mapping draft v0.1 | Mapping guidance for Observation, Device, Provenance (and related) for core events | Next | 📋 Planned | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | GAT MVP: informative pointer in RFC only; full mapping doc Next |
 
 ### ✅ Conformance, Examples & Repository Layout
 
 | Feature ID | Title | Description | Phase | Status | Assignee | Plan Document | Notes |
 |------------|-------|-------------|-------|--------|----------|---------------|-------|
-| CONF-001 | Conformance model draft v0.1 | Definition of OGIS compatibility: required behaviors, validation, semantic checks | v0.1 | 📋 Planned | - | - | Foundation for future test suites |
-| CONF-002 | Example payloads & fixtures | Curated examples under `/examples` aligned to v0.1 schemas (incl. vendor→canonical narrative) | v0.1 | 📋 Planned | - | - | Supports docs and tooling |
-| REPO-001 | Spec and schema repository scaffold | Create `/spec`, `/schemas/jsonschema` (and protobuf placeholder if needed), `/rfcs` per README layout | v0.1 | 📋 Planned | - | - | Index READMEs per subtree optional follow-up |
+| CONF-001 | Conformance model draft v0.1 | Definition of OGIS compatibility: required behaviors, validation, semantic checks | Next | 📋 Planned | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Full conformance suite non-goal for GAT MVP v0.1 |
+| CONF-002 | Example payloads & fixtures | Curated examples under `/examples` aligned to v0.1 schemas (incl. vendor→canonical narrative) | v0.1 (GAT) | 🧪 Testing | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Landed: [examples/](examples/); `npm run validate:examples`; GitHub Actions |
+| REPO-001 | Spec and schema repository scaffold | Create `/spec`, `/schemas/jsonschema` (and protobuf placeholder if needed), `/rfcs` per README layout | v0.1 (GAT) | 🧪 Testing | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Scaffold + `scripts/`, `package.json`, `.github/workflows` |
+
+---
+
+## GlucoseAITracker / OGT integration (MVP v0.1)
+
+Minimum OGIS artifacts required before OGT can validate canonical output: `glucose.reading` schema, semantic enums, time/unit/provenance docs, validated examples. GlucoseAITracker feeds **all insights** from this canonical shape (with a legacy adapter when the OGT pipeline flag is off).
+
+| Document | Purpose |
+|----------|---------|
+| [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | MVP spec deliverables and milestones |
+| [OGIS-MVP-v0.1-IMPLEMENTATION-TASKS.md](specifications/tasks/OGIS-MVP-v0.1-IMPLEMENTATION-TASKS.md) | Checkbox implementation tasks |
+
+**Downstream:** **OpenGlucoseTelemetry** — see `specifications/plans/OGT-MVP-GLUCOSEAITRACKER-PIPELINE-PLAN.md` in that repository (often cloned as a sibling of this repo in GlucoseAIWorkspace).
 
 ## How to Use This File
 
@@ -101,5 +121,5 @@ Feature backlog for the **Open Glucose Interoperability Standard (OGIS)** reposi
 5. Merged: Status = ✅ Complete, Assignee = @username
 ```
 
-**Last Updated:** 2026-03-28  
+**Last Updated:** 2026-03-29  
 **Maintainer:** OGIS contributors
