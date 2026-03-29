@@ -441,4 +441,27 @@ A world where glucose data is portable, interoperable, trusted, and easy to buil
 
 ## License
 
-TBD
+This project is licensed under the Apache License 2.0.
+
+Apache 2.0 is a permissive open-source license that allows:
+
+- commercial use
+- modification and distribution
+- private and enterprise use
+
+It also provides an explicit patent grant from contributors to users.
+
+This license was chosen to maximize adoption across device manufacturers,
+developers, healthcare systems, and research organizations.
+
+## Status
+
+This project is in early development (v0.1) and is being designed in the open.
+
+We are actively seeking feedback and collaboration from:
+
+- device manufacturers
+- developers
+- healthcare organizations
+- researchers
+- open-source contributors
