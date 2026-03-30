@@ -6,6 +6,7 @@ This folder holds **normative JSON fixtures** for the OGIS **`glucose.reading`**
 
 - Each `*.json` file is a **complete canonical event** — the same shape that **Open Glucose Telemetry (OGT)** should emit after mapping a source (HealthKit, manual entry, Dexcom API, etc.) and that **consumers** (e.g. GlucoseAITracker) can treat as the contract for a single reading.
 - These files are **not** raw vendor payloads. They are the **target** format defined by [glucose.reading.v0_1.json](../schemas/jsonschema/glucose.reading.v0_1.json).
+- Fixtures here are **valid OGIS v0.1 documents** for interchange and testing. They are **not** a prescription of normalized **storage** form — pipelines may retain original units, sidecars, or envelopes per [unit-semantics.md](../spec/core/unit-semantics.md) (including the **18.018** conversion conformance note).
 
 ## What it is doing
 
@@ -20,6 +21,7 @@ This folder holds **normative JSON fixtures** for the OGIS **`glucose.reading`**
 | `glucose.reading.healthkit.json` | Canonical output for one **HealthKit** glucose sample — see [Apple HealthKit to OGIS](#apple-healthkit-to-ogis-glucose-reading). |
 | `glucose.reading.manual.json` | Canonical output for **in-app manual** entry — see [Manual entry to OGIS](#manual-entry-to-ogis-glucose-reading). |
 | `glucose.reading.dexcom.json` | Canonical output for one Dexcom **EGV** row — see [Dexcom EGV to OGIS](#dexcom-egv-to-ogis-glucose-reading). |
+| `glucose.reading.watch.json` | Canonical output for **watch companion quick log** (manual entry on wearable) — see [Watch quick log to OGIS](#watch-quick-log-to-ogis-glucose-reading). |
 
 Add new examples only if they **validate**; extend the schema in a new `event_version` rather than shipping invalid JSON.
 
@@ -111,6 +113,16 @@ Manual readings are created **inside your app** (form, quick log, watch). There 
 | — | `quality` | Optional; default **`valid`** if the user attested the value, or `unknown` if unverified. |
 
 The file [`glucose.reading.manual.json`](./glucose.reading.manual.json) matches the illustrative payload above (mmol/L, minimal `device`, no trend).
+
+---
+
+## Watch quick log to OGIS glucose.reading
+
+Watch **quick log** flows are the same **manual** semantic path as phone entry (`measurement_source` **`manual`**), but the recording host is a wearable: set **`device.type`** to **`watch`** when the user confirms the value on the watch (and optionally populate `device.manufacturer` / `device.model`). This is **materially different** from [`glucose.reading.manual.json`](./glucose.reading.manual.json), which uses **`device.type` `app`** for a phone-centric example.
+
+**`provenance.source_system`** may stay **`app.manual`** (same app family as phone) or use a distinct stable string (e.g. reverse-DNS for the watch extension); see [source-system-registry.md](../spec/core/source-system-registry.md).
+
+The file [`glucose.reading.watch.json`](./glucose.reading.watch.json) shows **`mg/dL`**, **`watch`**, and a `watch:`-prefixed `raw_event_id` for idempotency clarity.
 
 ---
 

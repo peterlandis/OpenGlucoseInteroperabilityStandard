@@ -78,6 +78,16 @@ Companion to [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](../plans/OGIS-MVP-v0.1-GLU
 
 ---
 
+## Related — wave 2 (implementer interop)
+
+Informative docs and optional examples that support OGT / GlucoseAITracker parity (not part of original GAT checkbox list):
+
+- Plan: [OGIS-IMPLEMENTER-INTEROP-GUIDANCE-PLAN.md](../plans/OGIS-IMPLEMENTER-INTEROP-GUIDANCE-PLAN.md)
+- Tasks: [OGIS-IMPLEMENTER-INTEROP-GUIDANCE-TASKS.md](./OGIS-IMPLEMENTER-INTEROP-GUIDANCE-TASKS.md) (✅ complete)
+- Summary: [OGIS-IMPLEMENTER-INTEROP-GUIDANCE-COMPLETION-SUMMARY.md](../summary/OGIS-IMPLEMENTER-INTEROP-GUIDANCE-COMPLETION-SUMMARY.md)
+
+---
+
 ## Suggested order
 
 1. R-01 → R-03  

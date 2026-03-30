@@ -2,6 +2,8 @@
 
 Normative enums are enforced by [glucose.reading.v0_1.json](../../schemas/jsonschema/glucose.reading.v0_1.json). This document is the human-readable registry.
 
+- **`provenance.source_system`** — not a schema enum in v0.1; see the informative [source_system registry](../core/source-system-registry.md) (alongside [provenance.md](../core/provenance.md)).
+
 ## `measurement_source`
 
 | Value | Definition |
