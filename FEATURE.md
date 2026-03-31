@@ -44,6 +44,7 @@ Feature backlog for the **Open Glucose Interoperability Standard (OGIS)** reposi
 |------------|-------|-------------|-------|--------|----------|---------------|-------|
 | SEM-001 | Semantic conventions registry v0.1 | Documented enums and meanings: e.g. `trend.direction`, `measurement_source`, `quality.status`, `device.type` | v0.1 (GAT) | ✅ Complete | @peterlandis | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | [spec/semantic-conventions/README.md](spec/semantic-conventions/README.md), [enums.v0_1.json](spec/semantic-conventions/enums.v0_1.json) |
 | SEM-002 | Cross-event naming & metadata rules | Stable `event_type` patterns, subject/device identifier guidance, extension points | Next | 📋 Planned | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Broader multi-event consistency; not blocking GAT MVP |
+| SEM-003 | Informative `source_system` registry | Recommended strings for `provenance.source_system` (not a schema enum in v0.1); reduces drift across OGT / GlucoseAITracker / third parties | Next | ✅ Complete | @peterlandis | [OGIS-IMPLEMENTER-INTEROP-GUIDANCE-PLAN.md](specifications/plans/OGIS-IMPLEMENTER-INTEROP-GUIDANCE-PLAN.md) | [spec/core/source-system-registry.md](spec/core/source-system-registry.md); linked from [provenance.md](spec/core/provenance.md), [semantic-conventions/README.md](spec/semantic-conventions/README.md) |
 
 ### ⏱️ Time, Units & Provenance
 
@@ -52,6 +53,8 @@ Feature backlog for the **Open Glucose Interoperability Standard (OGIS)** reposi
 | TUP-001 | Time semantics specification | Definitions and rules for observed, device-recorded, received, exported timestamps; ordering | v0.1 (GAT) | ✅ Complete | @peterlandis | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | [spec/core/time-semantics.md](spec/core/time-semantics.md) |
 | TUP-002 | Unit semantics specification | Explicit glucose units (e.g. mg/dL, mmol/L), conversion rules, preserving source units | v0.1 (GAT) | ✅ Complete | @peterlandis | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | [spec/core/unit-semantics.md](spec/core/unit-semantics.md) |
 | TUP-003 | Provenance model specification | Source vendor/system, raw event id, adapter/producer versions, transformation metadata | v0.1 (GAT) | ✅ Complete | @peterlandis | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | [spec/core/provenance.md](spec/core/provenance.md) |
+| TUP-004 | RFC 3339 wire encoding notes | Informative subsection: UTC `Z`, fractional seconds, parsing pitfalls (JS/Swift-friendly); complements TUP-001 | Next | ✅ Complete | @peterlandis | [OGIS-IMPLEMENTER-INTEROP-GUIDANCE-PLAN.md](specifications/plans/OGIS-IMPLEMENTER-INTEROP-GUIDANCE-PLAN.md) | [spec/core/time-semantics.md](spec/core/time-semantics.md) — Wire format + implementation notes |
+| TUP-005 | Unit conversion conformance callout | Explicit note on **18.018 vs 18.0** drift and interoperability expectations; links OGT/Swift parity work | Next | ✅ Complete | @peterlandis | [OGIS-IMPLEMENTER-INTEROP-GUIDANCE-PLAN.md](specifications/plans/OGIS-IMPLEMENTER-INTEROP-GUIDANCE-PLAN.md) | [spec/core/unit-semantics.md](spec/core/unit-semantics.md) — Conformance subsection + OGT parity matrix link |
 
 ### 🔌 API, Transport & Operations
 
@@ -79,6 +82,7 @@ Feature backlog for the **Open Glucose Interoperability Standard (OGIS)** reposi
 |------------|-------|-------------|-------|--------|----------|---------------|-------|
 | CONF-001 | Conformance model draft v0.1 | Definition of OGIS compatibility: required behaviors, validation, semantic checks | Next | 📋 Planned | - | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | Full conformance suite non-goal for GAT MVP v0.1 |
 | CONF-002 | Example payloads & fixtures | Curated examples under `/examples` aligned to v0.1 schemas (incl. vendor→canonical narrative) | v0.1 (GAT) | ✅ Complete | @peterlandis | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | [examples/](examples/) + [examples/README.md](examples/README.md); `npm run validate:examples`; GitHub Actions |
+| CONF-003 | Optional additional v0.1 examples | e.g. Watch companion quick log canonical JSON **if** materially different from manual example | Next | ✅ Complete | @peterlandis | [OGIS-IMPLEMENTER-INTEROP-GUIDANCE-PLAN.md](specifications/plans/OGIS-IMPLEMENTER-INTEROP-GUIDANCE-PLAN.md) | [examples/glucose.reading.watch.json](examples/glucose.reading.watch.json); narrative in [examples/README.md](examples/README.md) |
 | REPO-001 | Spec and schema repository scaffold | Create `/spec`, `/schemas/jsonschema` (and protobuf placeholder if needed), `/rfcs` per README layout | v0.1 (GAT) | ✅ Complete | @peterlandis | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | `spec/`, `schemas/`, `rfcs/`, `scripts/`, `package.json`, `.github/workflows` |
 
 ---
@@ -92,8 +96,11 @@ Feature backlog for the **Open Glucose Interoperability Standard (OGIS)** reposi
 | [OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md](specifications/plans/OGIS-MVP-v0.1-GLUCOSEAITRACKER-PLAN.md) | MVP spec deliverables and milestones |
 | [OGIS-MVP-v0.1-IMPLEMENTATION-TASKS.md](specifications/tasks/OGIS-MVP-v0.1-IMPLEMENTATION-TASKS.md) | Checkbox implementation tasks |
 | [OGIS-MVP-v0.1-GAT-COMPLETION-SUMMARY.md](specifications/summary/OGIS-MVP-v0.1-GAT-COMPLETION-SUMMARY.md) | Completion summary (deliverables, verification, follow-ups) |
+| [OGIS-IMPLEMENTER-INTEROP-GUIDANCE-PLAN.md](specifications/plans/OGIS-IMPLEMENTER-INTEROP-GUIDANCE-PLAN.md) | Wave 2: `source_system` registry, time wire notes, conversion conformance, optional examples |
+| [OGIS-IMPLEMENTER-INTEROP-GUIDANCE-TASKS.md](specifications/tasks/OGIS-IMPLEMENTER-INTEROP-GUIDANCE-TASKS.md) | Checkbox tasks for wave 2 |
+| [OGIS-IMPLEMENTER-INTEROP-GUIDANCE-COMPLETION-SUMMARY.md](specifications/summary/OGIS-IMPLEMENTER-INTEROP-GUIDANCE-COMPLETION-SUMMARY.md) | Wave 2 completion summary |
 
-**Downstream:** **OpenGlucoseTelemetry** — see `specifications/plans/OGT-MVP-GLUCOSEAITRACKER-PIPELINE-PLAN.md` in that repository (often cloned as a sibling of this repo in GlucoseAIWorkspace).
+**Downstream:** **OpenGlucoseTelemetry** — see `specifications/plans/OGT-MVP-GLUCOSEAITRACKER-PIPELINE-PLAN.md` and wave 2 [OGT-CROSS-RUNTIME-PARITY-AND-CONSUMER-DOCS-PLAN.md](../OpenGlucoseTelemetry/specifications/plans/OGT-CROSS-RUNTIME-PARITY-AND-CONSUMER-DOCS-PLAN.md) in that repository (often cloned as siblings in GlucoseAIWorkspace).
 
 ## How to Use This File
 
@@ -122,5 +129,5 @@ Feature backlog for the **Open Glucose Interoperability Standard (OGIS)** reposi
 5. Merged: Status = ✅ Complete, Assignee = @username
 ```
 
-**Last Updated:** 2026-03-29 (GAT v0.1 plan items marked ✅ Complete)  
+**Last Updated:** 2026-03-30 (SEM-003, TUP-004, TUP-005, CONF-003 — implementer interop guidance wave 2 ✅)  
 **Maintainer:** OGIS contributors

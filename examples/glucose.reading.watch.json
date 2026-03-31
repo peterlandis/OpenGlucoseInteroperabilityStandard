@@ -1,0 +1,20 @@
+{
+  "event_type": "glucose.reading",
+  "event_version": "0.1",
+  "subject_id": "local:watch:demo-subject",
+  "observed_at": "2026-03-29T12:05:00.000Z",
+  "value": 118,
+  "unit": "mg/dL",
+  "measurement_source": "manual",
+  "device": {
+    "type": "watch",
+    "manufacturer": "Apple",
+    "model": "Watch Ultra 2"
+  },
+  "provenance": {
+    "source_system": "app.manual",
+    "raw_event_id": "watch:7a1f2b3c-4d5e-6f70-89ab-cdef01234567",
+    "adapter_version": "0.1.0",
+    "ingested_at": "2026-03-29T12:05:03.000Z"
+  }
+}

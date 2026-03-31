@@ -6,7 +6,7 @@ The `provenance` object on `glucose.reading` is **required**. It establishes **l
 
 | Field | Description |
 |-------|-------------|
-| **`source_system`** | Logical identifier for the upstream system. Examples: `com.apple.health`, `dexcom`, `app.manual`, vendor API base URLs or reverse-DNS strings. **must** be stable for the same integration. |
+| **`source_system`** | Logical identifier for the upstream system. Examples: `com.apple.health`, `dexcom`, `app.manual`, vendor API base URLs or reverse-DNS strings. **must** be stable for the same integration. **Informative registry:** recommended strings and patterns are listed in [source-system-registry.md](./source-system-registry.md); that document is **not** a schema enum—v0.1 remains an open string with `minLength: 1`. |
 | **`raw_event_id`** | Identifier of the **source record** (e.g. HealthKit `UUID` string, Dexcom event id). Used for idempotency and support. **must** be stable for the life of that source record. |
 | **`adapter_version`** | [Semantic versioning](https://semver.org/) (or semver-compatible string) of the **adapter or mapper** that emitted this OGIS event. |
 | **`ingested_at`** | RFC 3339 timestamp when the event was accepted by the **OGT collector** (or app-internal equivalent). **Not** the device clock. |
