@@ -14,6 +14,16 @@ The **machine-readable** contract for the GlucoseAITracker / OGT integration sli
 
 Validate examples locally: `npm install && npm run validate:examples`
 
+## Swift reference package (optional)
+
+This repo also includes an **optional Swift Package** that provides a small JSON Schema validator (Draft 2020-12 subset) and an **OGIS `glucose.reading` v0.1** schema object for implementers.
+
+- Package: `OpenGlucoseInteroperabilityStandardSwift` (see `Package.swift`)
+- Source: `swift/`
+- Run: `swift test`
+
+This is intended to make it easy for Swift apps and runtimes (e.g. GlucoseAITracker / OGT Swift) to validate OGIS-shaped payloads without pulling in a full JSON Schema engine.
+
 Implementation plans: [specifications/plans/](./specifications/plans/)
 
 ## Mission
